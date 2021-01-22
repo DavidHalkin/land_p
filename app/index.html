@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<a href="#" class="btn btn_blue btn_block">PRICES</a>
+			<a href="#prices_list" class="btn btn_blue btn_block">PRICES</a>
 			<div class="data_info">
 				<strong class="address">Chamerstrasse 75, Zug, ZG 6300, CH</strong>
 				<strong class="contact"><a href="tel:+41795499880">+4179 54 99880</a> WhatsApp/Viber</strong>
@@ -27,7 +27,7 @@
 				</div>
 				<div class="text-center book_now_section mb_22">
 					<p class="mb_22">Endermologie will help fight cellulite!</p>
-					<a href="#" class="btn btn_blue2 d-inline-block d-md-block">BOOK NOW</a>
+					<a href="#book_now" class="btn btn_blue2 d-inline-block d-md-block">BOOK NOW</a>
 				</div>
 				<div class="list_text">
 					<h1 class="title">OUR LPG TREATMENTS</h1>
@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="price_list">
+				<div class="price_list" id="prices_list">
 					<h2 class="title">PRICE LIST</h2>
 					<ul class="list-unstyled bordered_bottom">
 						<li>
@@ -180,15 +180,9 @@
 						<iframe class="embed-responsive-item" src="https://youtube.com/embed/HiH9m_mZXvM?rel=0&showinfo=0&start=0" allowfullscreen></iframe>
 					</div>
 				</div>
-				<div class="contact_block pt_40">
+				<div class="contact_block pt_40" id="book_now">
 					<h2 class="title text-lg-center">CONTACT US</h2>
 					<div class="row row_lg">
-						<!-- <div class="col-12">
-							<div class="row">
-								<div class="col-lg-6">as</div>
-								<div class="col-lg-6">a2</div>
-							</div>
-						</div> -->
 						<div class="col-lg-6 pb_48 order-lg-last">
 							<img src="images/img4.webp" alt="" class="img-fluid">
 						</div>
@@ -203,9 +197,37 @@
 							<p>Chamerstrasse 75, Zug 6300, CH</p>
 							<p><a href="tel:+41795499880">+4179 54 99880</a></p>
 							<div class="pt_24">
-								<a href="#" class="btn btn_blue2 d-inline-block d-md-block text-center text-uppercase">Request Appointment</a>
+								<a href="#" class="btn btn_blue2 d-inline-block d-md-block text-center text-uppercase btn_toggle btn_toggle_js">Request Appointment</a>
 							</div>
 						</div>
+					</div>
+					<div class="block_form block_form_js">
+						<form action="#">
+							<h3>Request Appointment</h3>
+							<div class="row">
+								<div class="col-md-6 mb_24">
+									<div class="holder_input">
+										<input type="text" class="form-control" id="name1" placeholder="Name (First, Last)*">
+										<span class="validation_alert">Please fill in this required field</span>
+									</div>
+								</div>
+								<div class="col-md-6 mb_24">
+									<div class="holder_input is-invalid">
+										<input type="email" class="form-control" id="email1" placeholder="Email*">
+										<span class="validation_alert">Please enter a valid email address.</span>
+									</div>
+								</div>
+							</div>
+							<div class="d-flex flex-wrap justify-content-center align-items-center footer_form">
+								<p class="text-center">This site is protected by reCAPTCHA and the Google <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.</p>
+								<button class="btn btn_blue2 btn_send mx_8 btn_send_js">SEND</button>
+								<a href="#" class="btn_link mx_8 btn_cancel_js">Cancel</a>
+							</div>
+						</form>
+					</div>
+					<div class="success_block text-center success_block_js">
+						<svg viewBox="0 0 24 24" fill="currentColor" width="72" height="72" data-ux="Icon" class="x-el x-el-svg c2-1 c2-2 c2-4r c2-4s c2-4t c2-5i c2-3 c2-4 c2-5 c2-6 c2-7 c2-8"><path fill-rule="evenodd" d="M12 4a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm0 1.5A6.507 6.507 0 0 0 5.5 12c0 3.584 2.915 6.5 6.5 6.5 3.584 0 6.5-2.916 6.5-6.5S15.584 5.5 12 5.5zm3.316 4.249a.72.72 0 0 1 .195.533.719.719 0 0 1-.252.512l-4.099 3.491a.846.846 0 0 1-.56.209.845.845 0 0 1-.62-.268l-1.298-1.419a.723.723 0 0 1 .056-1.046.774.774 0 0 1 1.067.055l.845.931 3.6-3.053a.771.771 0 0 1 1.066.055z"></path></svg>
+						<p>Thank you for your inquiry! We will get back to you within 24 hours.</p>
 					</div>
 				</div>
 			</div>
@@ -220,6 +242,32 @@
 			</div>
 		</div>
 		<script src="js/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			// show form
+			$(".btn_toggle_js").click(function(){
+				$(".block_form_js").slideToggle("fast");
+				$(this).toggleClass("active");
+
+				$(".success_block_js").fadeOut("fast");
+				return false;
+			});
+			// hide form
+			$(".btn_cancel_js").click(function(){
+				$(".block_form_js").slideToggle("fast");
+				$(".btn_toggle_js").toggleClass("active");
+				return false;
+			});
+			// success
+			$(".btn_send_js").click(function(){
+				$(".block_form_js").slideToggle("fast");
+				$(".btn_toggle_js").toggleClass("active");
+
+				$(".success_block_js").fadeToggle("slow");
+				return false;
+			});
+		});
+		</script>	
 		<script>
 			var map;
 			function initMap() {
